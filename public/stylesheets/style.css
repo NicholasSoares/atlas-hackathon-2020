@@ -1,0 +1,6 @@
+.login-form-size {
+  max-width: 600px;
+}
+.msg-err, .msg-success {
+  display: none;
+}

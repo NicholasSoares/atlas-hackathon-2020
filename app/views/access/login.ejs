@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/popper.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <title>Acesso Sistema WIGG</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row justify-content-center align-content-center min-vh-100">
+        <div class="col-xl-8 border border-light rounded bg-light pt-5 pb-5 login-form-size">
+          <div id="msgErr" class="alert alert-danger msg-err" role="alert"></div>
+          <form method="post" action="/access" id="loginForm">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
+            </div>
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input name="password" type="password" class="form-control" id="password">
+            </div>
+            <div class="row justify-content-center align-content-center">
+              <div class="col-12 d-flex mt-2">
+                <button type="submit" class="btn btn-primary mx-auto pl-5 pr-5" id="btnLogin">Acessar</button>
+              </div>
+              <div class="col-12 d-flex text-center mt-3">
+                <a href="/access/recovery" class="mx-auto text-secondary">Esqueci minha senha</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/javascripts/loginPage.js"></script>
+</html>
