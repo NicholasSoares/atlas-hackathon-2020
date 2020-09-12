@@ -1,12 +1,10 @@
-const userRepository = require('../models/userRepository');
+const institutionsCategoriesRepository = require('../models/institutionsCategoriesRepository');
 const passwordHelper = require('../../utils/passwordHelper');
 const paginationHelper = require('../../utils/paginationHelper');
 
 module.exports = {
     create : async (req,res,next) => {
         try{
-            req.body.password = await passwordHelper.encryptPassword(req.body.password);
-            await userRepository.insert(req.body);
             res.sendStatus(200);
         }
         catch (e) {
@@ -15,9 +13,6 @@ module.exports = {
     },
     update : async (req,res,next) => {
         try{
-            let userData = await userRepository.getByEmail(req.body);
-            req.body.password = (req.body.password)? await passwordHelper.encryptPassword(req.body.password) : userData.password;
-            await userRepository.update(req.body);
             res.sendStatus(200);
         }
         catch (e) {
@@ -26,7 +21,7 @@ module.exports = {
     },
     delete : async (req,res,next) => {
         try{
-            await userRepository.delete(req.body);
+            await institutionsCategoriesRepository.delete(req.body);
             res.sendStatus(200);
         }
         catch (e) {
@@ -35,7 +30,7 @@ module.exports = {
     },
     pageList : async (req,res,next) => {
         try{
-            res.render('users/list');
+            res.render('institutions categories/list');
         }
         catch (e) {
             next(e);
@@ -43,7 +38,7 @@ module.exports = {
     },
     pageCreate : async (req,res,next) => {
         try{
-            res.render('users/create');
+            res.render('institutions categories/create');
         }
         catch (e) {
             next(e);
@@ -51,7 +46,7 @@ module.exports = {
     },
     pageUpdate : async (req,res,next) => {
         try{
-            res.render('users/details');
+            res.render('institutions categories/details');
         }
         catch (e) {
             next(e);
