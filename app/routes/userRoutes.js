@@ -12,6 +12,6 @@ router.get('/new', loginRequired, AdminRequired, userController.pageCreate);
 router.post('/new', loginRequired, AdminRequired, userCreateValidator,  userController.create);
 router.get('/update', loginRequired, AdminRequired, userController.pageUpdate);
 router.post('/update', loginRequired, AdminRequired, userUpdateValidator, userController.update);
-router.post('/update/delete', loginRequired, AdminRequired, userDeleteValidator, userController.delete);
+router.post('/delete', loginRequired, AdminRequired, userDeleteValidator, userController.delete);
 
 module.exports = router;

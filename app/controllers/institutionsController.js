@@ -22,7 +22,7 @@ module.exports = {
     delete: async (req, res, next) => {
         try {
             await institutionsRepository.delete(req.body);
-            res.sendStatus(200);
+            res.redirect('/institutions');
         }
         catch (e) {
             next(e);

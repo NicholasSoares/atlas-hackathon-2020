@@ -56,6 +56,7 @@
                 <th>Telefone</th>
 <!--                <th>E-mail</th>-->
                 <th>CNPJ</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -71,6 +72,13 @@
                 <td><%= institution.telefone %></td>
 <!--                <td><%= institution.email %></td>-->
                 <td><%= institution.cnpj %></td>
+                <td>
+                  <form action="/institutions/delete" method="post">
+                    <input type="hidden" name="institution_id" value="<%= institution.institution_id %>">
+                    <input type="hidden" name="deleted" value="true">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </td> 
               </tr>
               <% }) %>
             </tbody>

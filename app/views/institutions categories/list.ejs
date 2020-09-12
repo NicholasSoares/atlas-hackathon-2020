@@ -36,6 +36,7 @@
               <tr>
                 <th>#</th>
                 <th>Nome</th>
+                <th>Ações</th>
               </tr>
             </thead>
             <tbody>
@@ -43,6 +44,13 @@
               <tr>
                 <td><%= category.institution_category_id %></td>
                 <td><%= category.institution_category_name %></td>
+                <td>
+                  <form action="/categories/delete" method="post">
+                    <input type="hidden" name="institution_category_id" value="<%= category.institution_category_id %>">
+                    <input type="hidden" name="deleted" value="true">
+                    <button class="btn btn-danger" type="submit">Delete</button>
+                  </form>
+                </td> 
               </tr>
               <% }) %>
             </tbody>

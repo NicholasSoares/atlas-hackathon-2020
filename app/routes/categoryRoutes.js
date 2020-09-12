@@ -7,5 +7,6 @@ router.get('/', adminRequired, institutionsCategoriesController.pageList);
 router.get('/new', adminRequired, institutionsCategoriesController.pageCreate);
 router.post('/new', adminRequired, institutionsCategoriesController.create);
 router.get('/update', adminRequired, institutionsCategoriesController.pageUpdate);
+router.post('/delete', adminRequired, institutionsCategoriesController.delete);
 
 module.exports = router;

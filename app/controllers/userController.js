@@ -27,7 +27,7 @@ module.exports = {
     delete: async (req, res, next) => {
         try {
             await userRepository.delete(req.body);
-            res.sendStatus(200);
+            res.redirect('/users');
         }
         catch (e) {
             next(e);
