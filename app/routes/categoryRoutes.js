@@ -4,5 +4,7 @@ const institutionsCategoriesController = require('../controllers/institutionsCat
 const adminRequired = require('../../middlewares/adminRequired');
 
 router.get('/', adminRequired, institutionsCategoriesController.pageList);
+router.get('/new', adminRequired, institutionsCategoriesController.pageCreate);
+router.get('/update', adminRequired, institutionsCategoriesController.pageUpdate);
 
 module.exports = router;
