@@ -8,4 +8,11 @@ module.exports = {
             next(e);
         }
     },
+	sos : async (req,res,next) => {
+		try {
+			res.render('sos/index');
+		} catch (e) {
+			next(e);
+		}
+	},
 };
