@@ -23,7 +23,7 @@ create table users (
 
 create table institutions_categories (
 	institution_category_id BIGSERIAL PRIMARY KEY,
-	name VARCHAR (200) NOT NULL,
+	institution_category_name VARCHAR (200) NOT NULL,
 	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
     deleted boolean not null DEFAULT false
 );
@@ -31,6 +31,7 @@ create table institutions_categories (
 create table institutions (
 	institution_id BIGSERIAL PRIMARY KEY,
 	institution_category_id int NOT NULL references institutions_categories(institution_category_id),
+	institution_name VARCHAR (200) NOT NULL,
 	endereco VARCHAR (200) NOT NULL,
 	bairro VARCHAR (200) NOT NULL,
 	cep VARCHAR (200) NOT NULL,
