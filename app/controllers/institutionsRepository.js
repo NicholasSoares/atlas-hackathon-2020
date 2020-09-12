@@ -1,5 +1,4 @@
 const institutionsRepository = require('../models/institutionsRepository');
-const passwordHelper = require('../../utils/passwordHelper');
 const paginationHelper = require('../../utils/paginationHelper');
 
 module.exports = {
