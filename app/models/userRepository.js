@@ -19,11 +19,10 @@ module.exports = {
                 }
                 else{
                     resp = await client.query(`SELECT user_id, username, email, cellphone FROM USERS 
-                    WHERE and deleted = false
+                    WHERE deleted = false
                     LIMIT $1 OFFSET $2`, [limit, offset]);
                 }
-
-                resolve(resp.rows[0]);
+                resolve(resp.rows);
 
             }
             catch (e) {
