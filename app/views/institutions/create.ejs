@@ -2,16 +2,51 @@
 <html>
   <head>
     <title>title</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
   </head>
   <body>
-    institution_name
-    endereco
-    bairro
-    cep
-    cidade
-    telefone
-    email
-    cnpj
+    <div class="container">
+      <div class="row mt-5 border-bottom w-75">
+        <h2>New Institution</h2>
+      </div>
+
+      <div class="row mt-5 mb-5">
+        <form class="w-75">
+          <div class="form-group">
+            <label for="institution_name">Nome</label>
+            <input type="text" class="form-control" id="institution_name">
+          </div>
+          <div class="form-group">
+            <label for="endereco">Endereço</label>
+            <input type="text" class="form-control" id="endereco">
+          </div>
+          <div class="form-group">
+            <label for="bairro">Bairro</label>
+            <input type="text" class="form-control" id="bairro">
+          </div>
+          <div class="form-group">
+            <label for="cep">CEP</label>
+            <input type="text" class="form-control" id="cep">
+          </div>
+          <div class="form-group">
+            <label for="cidaede">Cidade</label>
+            <input type="text" class="form-control" id="cidade">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone</label>
+            <input type="text" class="form-control" id="telefone" placeholder="Your phone here.">
+          </div>
+          <div class="form-group">
+            <label for="cnpj">CNPJ</label>
+            <input type="text" class="form-control" id="cnpj">
+          </div>
+          <button type="submit" class="btn btn-primary">Create</button>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

@@ -7,7 +7,7 @@ module.exports = {
         try {
             req.body.password = await passwordHelper.encryptPassword(req.body.password);
             await userRepository.insert(req.body);
-            res.sendStatus(200);
+            res.redirect('/users');
         }
         catch (e) {
             next(e);

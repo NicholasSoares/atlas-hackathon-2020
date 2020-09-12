@@ -2,9 +2,27 @@
 <html>
   <head>
     <title>title</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
   </head>
   <body>
-  institution_category_name
+  <div class="container">
+
+    <div class="row mt-5 border-bottom w-75">
+      <h2>New Category</h2>
+    </div>
+    <div class="row mt-5">
+
+      <form class="w-75" action="/users/new" method="post">
+
+        <div class="form-group">
+          <label for="name">Category Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Category name here.">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
   </body>
 </html>

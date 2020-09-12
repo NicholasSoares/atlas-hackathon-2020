@@ -50,6 +50,7 @@
                 <th>Nome</th>
                 <th>E-mail</th>
                 <th>Telefone</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -59,6 +60,7 @@
                 <td><%= user.username %></td>
                 <td><%= user.email %></td>
                 <td><%= user.cellphone %></td>
+                <td><button class="btn btn-danger">Delete</button></td>
               </tr>
               <% }) %>
             </tbody>
