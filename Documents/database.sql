@@ -29,7 +29,7 @@ create table institutions_categories (
 );
 
 create table institutions (
-	user_id BIGSERIAL PRIMARY KEY,
+	institution_id BIGSERIAL PRIMARY KEY,
 	institution_category_id int NOT NULL references institutions_categories(institution_category_id),
 	endereco VARCHAR (200) NOT NULL,
 	bairro VARCHAR (200) NOT NULL,
