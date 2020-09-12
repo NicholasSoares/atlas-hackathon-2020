@@ -4,7 +4,8 @@ const paginationHelper = require('../../utils/paginationHelper');
 module.exports = {
     create: async (req, res, next) => {
         try {
-            res.sendStatus(200);
+            await institutionsRepository.insert(req.body);
+            res.redirect('/institutions');
         }
         catch (e) {
             next(e);
