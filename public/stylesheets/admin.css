@@ -1,0 +1,35 @@
+.row{
+    display: flex;
+    align-items: center;
+    height: 100vh;
+}
+
+.option {
+    display: flex;
+    height: 300px;
+    width: 100%;
+    margin: 30px;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 40px;
+    border-radius: 50px;
+    border: black 1px solid;
+}
+
+.users {
+    background: blue;
+}
+
+.institutions {
+    background: green;
+}
+
+.institution_categories {
+    background: red;
+}
+
+.option:hover{
+    border: black 10px solid;
+    font-size: 60px;
+}

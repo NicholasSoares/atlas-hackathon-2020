@@ -15,4 +15,11 @@ module.exports = {
 			next(e);
 		}
 	},
+	social : async (req,res,next) => {
+		try {
+			res.render('social/index');
+		} catch (e) {
+			next(e);
+		}
+	},
 };

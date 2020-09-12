@@ -40,7 +40,6 @@
 .right_card {
     background: #311977;
     color: white;
-
 }
 
 .logo_card img {
@@ -54,13 +53,13 @@
     text-align: center;
     font-style: normal;
     font-weight: normal;
-    line-height: 47px;
+    line-height: 70px;
 }
 
-.card p.texto_destaque {
-    font-size: 52px;
+.card p strong {
+    line-height: 54px;
     font-weight: bold;
-    color: #fc8403;
+    color: #FF5500;
 }
 
 .card_btn {
@@ -71,13 +70,15 @@
 }
 
 .left_card .card_btn {
-    background: #311977;
-    color: white;
+    background: #FFFFFF;
+    color: black;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
     text-align: center;
+    border: #FF5500 6px solid;
+
 }
 
 .right_card .card_btn {
@@ -88,4 +89,16 @@
     font-size: 30px;
     line-height: 35px;
     text-align: center;
+}
+
+
+.card_btn:hover{
+    background: #FF5500;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    text-align: center;
+    border:none;
 }

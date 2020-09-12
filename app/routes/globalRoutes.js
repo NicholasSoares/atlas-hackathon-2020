@@ -3,7 +3,8 @@ const router = express.Router();
 const globalController = require('../controllers/globalController');
 const guessRequired = require('../../middlewares/guessRequired');
 
-router.get('/', guessRequired, globalController.home);
-router.get('/sos', guessRequired, globalController.sos);
+router.get('/', globalController.home);
+router.get('/sos', globalController.sos);
+router.get('/social',  globalController.social);
 
 module.exports = router;
