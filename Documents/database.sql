@@ -48,6 +48,22 @@ insert into roles (role_id, rolename) values (1, 'Usuario');
 
 insert into users (role_id, username, email, password, cellphone) values (0, 'Adminstrador', 'teste@gmail.com', '$2b$10$hbiTjICrsPzXnsMTducHzOzvrm0L1LorrSjO3QHs32Xax0q1O8lPa','(53) 99999-9999');
 
+insert into institutions_categories (institution_category_name) values ( 'Animais' );
+insert into institutions_categories (institution_category_name) values ( 'Crianças' );
+insert into institutions_categories (institution_category_name) values ( 'Idosos' );
+insert into institutions_categories (institution_category_name) values ( 'Saúde' );
+insert into institutions_categories (institution_category_name) values ( 'Alimentos' );
+insert into institutions_categories (institution_category_name) values ( 'Outras' );
+-- insert into institutions_categories (institution_category_name) values ( 'Apoio à mulheres' );
+-- insert into institutions_categories (institution_category_name) values ( 'Direitos Humanos' );
+-- insert into institutions_categories (institution_category_name) values ( 'Étnico Racial' );
+-- insert into institutions_categories (institution_category_name) values ( 'LGBT' );
+-- insert into institutions_categories (institution_category_name) values ( 'Reciclagem' );
+-- insert into institutions_categories (institution_category_name) values ( 'Educação' );
+-- insert into institutions_categories (institution_category_name) values ( 'Meio Ambiente' );
+-- insert into institutions_categories (institution_category_name) values ( 'Moradia' );
+-- insert into institutions_categories (institution_category_name) values ( 'Voluntariado' );
+
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",
 	"sess" json NOT NULL,
