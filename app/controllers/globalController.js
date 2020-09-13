@@ -34,4 +34,14 @@ module.exports = {
 			next(e);
 		}
 	},
+	oneSocial : async (req,res,next) => {
+		try {
+			let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
+			let institution = await institutionsRepository.getById({institution_id: req.params.institutionId})
+			console.log(institution);
+			res.render('social/detalhes', { institution: institution, categories: institutionsCategories});
+		} catch (e) {
+			next(e);
+		}
+	},
 };

@@ -6,5 +6,6 @@ const guessRequired = require('../../middlewares/guessRequired');
 router.get('/', globalController.home);
 router.get('/sos', globalController.sos);
 router.get('/social',  globalController.social);
+router.get('/social/:institutionId',  globalController.oneSocial);
 
 module.exports = router;

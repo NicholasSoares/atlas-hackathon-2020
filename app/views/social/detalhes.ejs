@@ -40,7 +40,6 @@
         </div>
         <hr>
         <ul>
-            <% institutions.forEach((institution) => { %>
             <li>
                 <div class="my-card">
                     <div class="my-card-image">
@@ -48,14 +47,18 @@
                             alt="Logo da policia">
                     </div>
                     <div class="my-card-content">
-                        <h3><%= institution.institution_name %></h3>
+                        <h3 class="my-cardH3"><%= institution.institution_name %></h3>
                         <hr>
                         <p class="desc"><%= institution.descricao %></p>
-                        <a href="/social/<%=institution.institution_id%>" class="btn orange-btn">Ver mais</a>
+                        <p class="desc">Telefone: <%= institution.telefone %></p>
+                        <p class="desc">E-mail: <%= institution.email %></p>
+                        <p class="desc">Endereço: <%= institution.endereco %></p>
+                        <p class="desc">Bairro: <%= institution.bairro %></p>
+                        <p class="desc">CEP: <%= institution.cep %></p>
+                        <p class="desc">CNPJ: <%= institution.cnpj %></p>
                     </div>
                 </div>
             </li>
-            <% }) %>
         </ul>
     </div>
 </body>
