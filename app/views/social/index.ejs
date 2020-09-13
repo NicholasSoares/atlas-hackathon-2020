@@ -23,7 +23,7 @@
                             <label class="input-group-text" for="category">Escolha a categoria:</label>
                         </div>
                         <select class="form-control custom-select" id="role_id" name="category">
-                            <option value="0" selected>Todos</option>
+                            <option value="0" selected>Todas</option>
                             <% categories.forEach((category) => { %>
                             <option value="<%= category.institution_category_id %>">
                                 <%= category.institution_category_name %></option>
