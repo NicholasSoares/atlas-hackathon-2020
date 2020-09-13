@@ -47,6 +47,18 @@ module.exports = {
             }
         });
     },
+    getByCategory : async ({category_id}) =>{
+        return new Promise(async (resolve, reject) => {
+            try{
+
+                let resp = await client.query('SELECT * FROM institutions WHERE institution_category_id = $1 and deleted = false', [category_id]);
+                resolve(resp.rows);
+            }
+            catch (e) {
+                reject(appError.newThrowPgError(e));
+            }
+        });
+    },
     insert : async ({institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj}) =>{
         return new Promise(async (resolve, reject) => {
             let client = await client_transaction.connect();

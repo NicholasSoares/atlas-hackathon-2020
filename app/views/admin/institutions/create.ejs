@@ -15,13 +15,11 @@
         <form class="w-75" action="/admin/institutions/new" method="post">
           <div class="form-group">
             <label for="role_id">Category</label>
-            <select class="form-control" id="role_id" name="institution_category_id">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
+            <select class="form-control custom-select" id="role_id" name="institution_category_id">
+              <option selected>Escolha...</option>
+              <% categories.forEach((category) => { %>
+                <option value="<%= category.institution_category_id %>"><%= category.institution_category_name %></option>
+              <% }) %>
             </select>
           </div>
           <div class="form-group">

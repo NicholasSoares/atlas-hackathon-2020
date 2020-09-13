@@ -1,4 +1,5 @@
 const institutionsRepository = require('../models/institutionsRepository');
+const institutionsCategoriesRepository = require('../models/institutionsCategoriesRepository');
 const paginationHelper = require('../../utils/paginationHelper');
 
 module.exports = {
@@ -40,7 +41,9 @@ module.exports = {
     },
     pageCreate: async (req, res, next) => {
         try {
-            res.render('admin/institutions/create');
+            let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
+            console.log(institutionsCategories);
+            res.render('admin/institutions/create', {categories : institutionsCategories});
         }
         catch (e) {
             next(e);

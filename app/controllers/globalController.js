@@ -1,3 +1,5 @@
+const institutionsRepository = require('../models/institutionsRepository');
+const institutionsCategoriesRepository = require('../models/institutionsCategoriesRepository');
 const appError = require('../../utils/appErrorFactory');
 
 module.exports = {
@@ -17,7 +19,17 @@ module.exports = {
 	},
 	social : async (req,res,next) => {
 		try {
-			res.render('social/index');
+			let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
+			let institutions;
+			if(! req.query.category || req.query.category == 0){
+				institutions = await institutionsRepository.list({ search: undefined, limit: 1000, offset: 0 });
+			} else {
+				institutions = await institutionsRepository.getByCategory({ category_id: req.query.category });
+			}
+
+			console.log(institutions);
+
+			res.render('social/index', { institutions: institutions, categories: institutionsCategories});
 		} catch (e) {
 			next(e);
 		}
