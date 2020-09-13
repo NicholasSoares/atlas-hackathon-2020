@@ -105,4 +105,5 @@ dist
 
 .idea/
 
-public/images/storage/
+public/images/storage/*
+!public/images/storage/.gitkeep 
