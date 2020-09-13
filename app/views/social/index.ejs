@@ -18,8 +18,10 @@
         <div class="filters">
             <form action="/social" method="get">
                 <div class="form-group">
-                    <label for="role_id">Escolha uma categoria:</label>
                     <div class="input-group">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="category">Escolha a categoria:</label>
+                        </div>
                         <select class="form-control custom-select" id="role_id" name="category">
                             <option value="0" selected>Todos</option>
                             <% categories.forEach((category) => { %>
@@ -40,7 +42,7 @@
                 <li>
                     <div class="my-card">
                         <div class="my-card-image">
-                            <img src="/images/doar.png" alt="Logo da policia">
+                                <img src="<%= institution.image ? '/images/storage/'+institution.image : '/images/doar.png' %>" alt="Logo da policia" >
                         </div>
                         <div class="my-card-content">
                             <h3 class="my-cardH3"><%= institution.institution_name %></h3>

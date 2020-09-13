@@ -9,7 +9,7 @@ module.exports = {
                 let resp;
 
                 if (search){
-                    resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj FROM institutions 
+                    resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj FROM institutions 
                     WHERE
                         (institution_name ILIKE "%$1%" or 
                         endereco ILIKE "%$1%" or 
@@ -23,7 +23,7 @@ module.exports = {
                     LIMIT $2 OFFSET $3`, [search, limit, offset]);
                 }
                 else{
-                    resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj FROM institutions 
+                    resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj FROM institutions 
                     WHERE deleted = false
                     LIMIT $1 OFFSET $2`, [limit, offset]);
                 }
