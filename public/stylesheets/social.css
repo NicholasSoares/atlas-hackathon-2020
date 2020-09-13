@@ -7,10 +7,9 @@ body {
 h3, h3 {
     font-size: 1.50rem;
 }
+
 .filters {
     padding-top: 10px;
-    display: flex;
-    justify-content: center;
 }
 
 .container {
