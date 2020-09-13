@@ -13,7 +13,7 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <%- include('../admin/adminSideBar'); %>
+      <%- include('../adminSideBar'); %>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
         <div class="chartjs-size-monitor"
           style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
@@ -35,7 +35,7 @@
         <h2>Institutions</h2>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <a href="/institutions/new">
+            <a href="/admin/institutions/new">
               <button type="button" class="btn btn-success">New</button>
             </a>
           </div>
@@ -73,7 +73,7 @@
 <!--                <td><%= institution.email %></td>-->
                 <td><%= institution.cnpj %></td>
                 <td>
-                  <form action="/institutions/delete" method="post">
+                  <form action="/admin/institutions/delete" method="post">
                     <input type="hidden" name="institution_id" value="<%= institution.institution_id %>">
                     <input type="hidden" name="deleted" value="true">
                     <button class="btn btn-danger" type="submit">Delete</button>

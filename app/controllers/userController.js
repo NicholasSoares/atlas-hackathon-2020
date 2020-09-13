@@ -7,7 +7,7 @@ module.exports = {
         try {
             req.body.password = await passwordHelper.encryptPassword(req.body.password);
             await userRepository.insert(req.body);
-            res.redirect('/users');
+            res.redirect('/admin/users');
         }
         catch (e) {
             next(e);
@@ -27,7 +27,7 @@ module.exports = {
     delete: async (req, res, next) => {
         try {
             await userRepository.delete(req.body);
-            res.redirect('/users');
+            res.redirect('/admin/users');
         }
         catch (e) {
             next(e);
@@ -36,7 +36,7 @@ module.exports = {
     pageList: async (req, res, next) => {
         try {
             let users = await userRepository.list({ search: undefined, limit: 1000, offset: 0 });
-            res.render('users/list', { users });
+            res.render('admin/users/list', { users });
         }
         catch (e) {
             next(e);
@@ -44,7 +44,7 @@ module.exports = {
     },
     pageCreate: async (req, res, next) => {
         try {
-            res.render('users/create');
+            res.render('admin/users/create');
         }
         catch (e) {
             next(e);
@@ -52,7 +52,7 @@ module.exports = {
     },
     pageUpdate: async (req, res, next) => {
         try {
-            res.render('users/details');
+            res.render('admin/users/details');
         }
         catch (e) {
             next(e);

@@ -5,7 +5,7 @@ module.exports = {
     create: async (req, res, next) => {
         try {
             await institutionsCategoriesRepository.insert(req.body);
-            res.redirect('/categories');
+            res.redirect('/admin/categories');
         }
         catch (e) {
             next(e);
@@ -22,7 +22,7 @@ module.exports = {
     delete: async (req, res, next) => {
         try {
             await institutionsCategoriesRepository.delete(req.body);
-            res.redirect('/categories');
+            res.redirect('/admin/categories');
         }
         catch (e) {
             next(e);
@@ -32,7 +32,7 @@ module.exports = {
         try {
             let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
             console.log(institutionsCategories);
-            res.render('institutions categories/list', { categories: institutionsCategories });
+            res.render('admin/institutions categories/list', { categories: institutionsCategories });
         }
         catch (e) {
             next(e);
@@ -40,7 +40,7 @@ module.exports = {
     },
     pageCreate: async (req, res, next) => {
         try {
-            res.render('institutions categories/create');
+            res.render('admin/institutions categories/create');
         }
         catch (e) {
             next(e);
@@ -48,7 +48,7 @@ module.exports = {
     },
     pageUpdate: async (req, res, next) => {
         try {
-            res.render('institutions categories/details');
+            res.render('admin/institutions categories/details');
         }
         catch (e) {
             next(e);
