@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>title</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row mt-5 border-bottom w-75">
+        <h2>Solicitar Criação de Instituição</h2>
+    </div>
+
+    <div class="row mt-5 mb-5">
+
+        <form class="w-75" action="/admin/institutions/solicitation" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="role_id">Category</label>
+                <select class="form-control custom-select" id="role_id" name="institution_category_id">
+                    <option selected>Escolha...</option>
+                    <% categories.forEach((category) => { %>
+                        <option value="<%= category.institution_category_id %>"><%= category.institution_category_name %></option>
+                    <% }) %>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="image">Imagem</label>
+                <input type="file"
+                       id="avatar" name="image" value=""
+                       accept="image/png, image/jpeg">
+            </div>
+
+            <div class="form-group">
+                <label for="institution_name">Nome</label>
+                <input type="text" class="form-control" id="institution_name" name="institution_name">
+            </div>
+            <div class="form-group">
+                <label for="endereco">Endereço</label>
+                <input type="text" class="form-control" id="endereco" name="endereco">
+            </div>
+            <div class="form-group">
+                <label for="bairro">Bairro</label>
+                <input type="text" class="form-control" id="bairro" name="bairro">
+            </div>
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" class="form-control" id="cep" name="cep">
+            </div>
+            <div class="form-group">
+                <label for="cidaede">Cidade</label>
+                <input type="text" class="form-control" id="cidade" name="cidade">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Your phone here.">
+            </div>
+            <div class="form-group">
+                <label for="cnpj">CNPJ</label>
+                <input type="text" class="form-control" id="cnpj" name="cnpj">
+            </div>
+            <button type="submit" class="btn btn-primary">Solicitar Criação</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -44,4 +44,12 @@ module.exports = {
 			next(e);
 		}
 	},
+	cadastroPage : async (req,res,next) => {
+		try {
+			let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
+			res.render('cadastro', {categories :institutionsCategories});
+		} catch (e) {
+			next(e);
+		}
+	},
 };

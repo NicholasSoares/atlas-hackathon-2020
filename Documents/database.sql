@@ -43,6 +43,7 @@ create table institutions (
 	cnpj VARCHAR (14),
 	descricao VARCHAR(1000),
 	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
+	approved boolean not null DEFAULT true,
     deleted boolean not null DEFAULT false
 );
 

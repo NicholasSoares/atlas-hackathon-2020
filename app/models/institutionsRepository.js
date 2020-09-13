@@ -19,12 +19,12 @@ module.exports = {
                         telefone ILIKE "%$1%" or 
                         email ILIKE "%$1%" or 
                         cnpj ILIKE "%$1%")
-                    and deleted = false
+                    and deleted = false and approved = true
                     LIMIT $2 OFFSET $3`, [search, limit, offset]);
                 }
                 else{
                     resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj, descricao FROM institutions 
-                    WHERE deleted = false
+                    WHERE deleted = false and approved = true
                     LIMIT $1 OFFSET $2`, [limit, offset]);
                 }
 
@@ -39,7 +39,7 @@ module.exports = {
     getById : async ({institution_id}) =>{
         return new Promise(async (resolve, reject) => {
             try{
-                let resp = await client.query('SELECT * FROM institutions WHERE institution_id = $1 and deleted = false', [institution_id]);
+                let resp = await client.query('SELECT * FROM institutions WHERE institution_id = $1 and deleted = false and approved = true', [institution_id]);
                 resolve(resp.rows[0]);
             }
             catch (e) {
@@ -51,7 +51,7 @@ module.exports = {
         return new Promise(async (resolve, reject) => {
             try{
 
-                let resp = await client.query('SELECT * FROM institutions WHERE institution_category_id = $1 and deleted = false', [category_id]);
+                let resp = await client.query('SELECT * FROM institutions WHERE institution_category_id = $1 and deleted = false and approved = true', [category_id]);
                 resolve(resp.rows);
             }
             catch (e) {
@@ -59,13 +59,13 @@ module.exports = {
             }
         });
     },
-    insert : async ({institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj}) =>{
+    insert : async ({institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj, approved}) =>{
         return new Promise(async (resolve, reject) => {
             let client = await client_transaction.connect();
             try {
                 await client.query('BEGIN');
-                let resp = await client.query('INSERT into institutions (institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
-                 [institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj]);
+                let resp = await client.query('INSERT into institutions (institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj, approved) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)',
+                 [institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj, approved]);
                 await client.query('COMMIT');
                 resolve(resp);
             } catch (e) {
@@ -108,5 +108,36 @@ module.exports = {
                 client.release();
             }
         });
-    }
+    },
+    solicitation : async () =>{
+        return new Promise(async (resolve, reject) => {
+            try{
+                let resp = await client.query(`SELECT institution_id, institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj, descricao FROM institutions 
+                    WHERE deleted = false and approved = false`);
+                console.log(resp.rows)
+                resolve(resp.rows[0]);
+
+            }
+            catch (e) {
+                reject(appError.newThrowPgError(e));
+            }
+        });
+    },
+    approve : async ({institution_id, approved}) =>{
+        return new Promise(async (resolve, reject) => {
+            let client = await client_transaction.connect();
+            try {
+                await client.query('BEGIN');
+                await client.query('UPDATE institutions SET approved = $1 where institution_id = $2', [approved,institution_id]);
+                await client.query('COMMIT');
+                resolve(true);
+            } catch (e) {
+                await client.query('ROLLBACK');
+                reject(appError.newThrowPgError(e));
+            } finally {
+                client.release();
+            }
+        });
+    },
+
 };

@@ -6,8 +6,20 @@ module.exports = {
     create: async (req, res, next) => {
         try {
             req.body.image = req.file.filename;
+            req.body.approved = true;
             await institutionsRepository.insert(req.body);
             res.redirect('/admin/institutions');
+        }
+        catch (e) {
+            next(e);
+        }
+    },
+    create_solicitation: async (req, res, next) => {
+        try {
+            req.body.image = req.file.filename;
+            req.body.approved = false;
+            await institutionsRepository.insert(req.body);
+            res.redirect('/');
         }
         catch (e) {
             next(e);
@@ -25,6 +37,24 @@ module.exports = {
         try {
             await institutionsRepository.delete(req.body);
             res.redirect('/admin/institutions');
+        }
+        catch (e) {
+            next(e);
+        }
+    },
+    approve : async (req, res, next) => {
+        try {
+            await institutionsRepository.approve(req.body);
+            res.redirect('/admin/institutions/solicitation');
+        }
+        catch (e) {
+            next(e);
+        }
+    },
+    reprove : async (req, res, next) => {
+        try {
+            await institutionsRepository.delete(req.body);
+            res.redirect('/admin/institutions/solicitation');
         }
         catch (e) {
             next(e);
@@ -51,6 +81,15 @@ module.exports = {
     pageUpdate: async (req, res, next) => {
         try {
             res.render('admin/institutions/details');
+        }
+        catch (e) {
+            next(e);
+        }
+    },
+    pageSolicitations: async (req, res, next) => {
+        try {
+            let solicitation = await institutionsRepository.solicitation();
+            res.render('admin/institutions/solicitations', { solicitation });
         }
         catch (e) {
             next(e);
