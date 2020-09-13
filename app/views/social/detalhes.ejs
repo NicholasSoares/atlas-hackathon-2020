@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/social.css">
-    <title>Pelotas Social</title>
+    <title><%= institution.institution_name %> - Pelotas Social</title>
 </head>
 
 <body>
@@ -44,18 +44,30 @@
                 <div class="my-card">
                     <div class="my-card-image">
                         <img src="<%= institution.image ? '/images/storage/'+institution.image : '/images/doar.png' %>"
-                            alt="Logo da policia">
+                            alt="<%= institution.institution_name %>">
                     </div>
                     <div class="my-card-content">
                         <h3 class="my-cardH3"><%= institution.institution_name %></h3>
                         <hr>
                         <p class="desc"><%= institution.descricao %></p>
+                        <% if(institution.telefone) { %>
                         <p class="desc">Telefone: <%= institution.telefone %></p>
+                        <% } %>
+                        <% if(institution.email) { %>
                         <p class="desc">E-mail: <%= institution.email %></p>
+                        <% } %>
+                        <% if(institution.endereco) { %>
                         <p class="desc">Endereço: <%= institution.endereco %></p>
+                        <% } %>
+                        <% if(institution.bairro) { %>
                         <p class="desc">Bairro: <%= institution.bairro %></p>
+                        <% } %>
+                        <% if(institution.cep) { %>
                         <p class="desc">CEP: <%= institution.cep %></p>
+                        <% } %>
+                        <% if(institution.cnpj) { %>
                         <p class="desc">CNPJ: <%= institution.cnpj %></p>
+                        <% } %>
                     </div>
                 </div>
             </li>
