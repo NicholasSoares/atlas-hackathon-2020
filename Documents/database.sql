@@ -31,7 +31,7 @@ create table institutions_categories (
 create table institutions (
 	institution_id BIGSERIAL PRIMARY KEY,
 	institution_category_id int NOT NULL references institutions_categories(institution_category_id),
-	image VARCHAR (200) NOT NULL,
+	image VARCHAR (200),
 	institution_name VARCHAR (200) NOT NULL,
 	endereco VARCHAR (200) NOT NULL,
 	bairro VARCHAR (200) NOT NULL,
