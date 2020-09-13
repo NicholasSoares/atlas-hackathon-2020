@@ -6,20 +6,24 @@
     justify-content: center;
     background: #C4C4C4;
     width: 100%;
-    height: 94px;
+    height: 70px;
     left: 0px;
     top: 0px;
     z-index: 999;
+    box-shadow: 1px 1px 2px grey;
 }
 
-.header img{
+.logo {
+    margin: 0;
+    height: 50px;
     display: flex;
+    margin-left: 15px;
 }
 
 .container {
     max-width: none;
-    margin-top: 94px;
-    height: calc(100vh - 94px)
+    margin-top: 70px;
+    height: calc(100vh - 70px)
 }
 .row {
     height: inherit;
@@ -31,10 +35,12 @@
     justify-content: center;
     align-items: center;
     border: none;
+    border-radius: 0px;
 }
 
 .left_card {
-
+    background: white;
+    color: black;
 }
 
 .right_card {
@@ -43,62 +49,54 @@
 }
 
 .logo_card img {
-    width: 480px;
+    width: 360px;
     margin-bottom: 50px;
 }
 
 .card p {
-    font-size: 40px;
+    font-size: 30px;
     font-family: Sans-serif;
     text-align: center;
     font-style: normal;
     font-weight: normal;
-    line-height: 70px;
+    line-height: 50px;
+    max-width: 560px;
 }
 
 .card p strong {
-    line-height: 54px;
+    line-height: 50px;
     font-weight: bold;
     color: #FF5500;
 }
 
 .card_btn {
     margin-top: 50px;
-    width: 307px;
-    height: 77px;
-    border-radius: 29px;
-}
-
-.left_card .card_btn {
-    background: #FFFFFF;
-    color: black;
+    width: 250px;
+    height: 70px;
+    border-radius: 10px;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 35px;
     text-align: center;
-    border: #FF5500 6px solid;
+}
+
+.left_card .card_btn {
+    background: #FFFFFF;
+    color: #FF5500;
+    border: #FF5500 4px solid;
 
 }
 
 .right_card .card_btn {
     background: #FFFFFF;
     color: #311977;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 35px;
-    text-align: center;
+    border:none;
 }
 
 
 .card_btn:hover{
     background: #FF5500;
     color: #FFFFFF;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 30px;
-    line-height: 35px;
-    text-align: center;
     border:none;
 }
