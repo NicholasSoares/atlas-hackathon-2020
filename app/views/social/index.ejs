@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/social.css">
-    <title>Portal da Prefeitura</title>
+    <title>Pelotas Social</title>
 </head>
+
 <body>
     <div class="header">
-        <img class="logo" src="/images/p2.png" alt="Logo da Prefeitura de Pelotas" >
+        <img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social">
     </div>
     <div class="container">
 
         <div class="filters">
             <form action="/social" method="get">
                 <div class="form-group">
-                    <label for="role_id">Qual Categoria?</label>
+                    <label for="role_id">Escolha uma categoria:</label>
                     <div class="input-group">
                         <select class="form-control custom-select" id="role_id" name="category">
                             <option value="0" selected>Todos</option>
                             <% categories.forEach((category) => { %>
-                                <option value="<%= category.institution_category_id %>"><%= category.institution_category_name %></option>
+                            <option value="<%= category.institution_category_id %>">
+                                <%= category.institution_category_name %></option>
                             <% }) %>
                         </select>
                         <div class="input-group-append">
-                            <input class="btn btn-outline-secondary" type="submit" value="Buscar">
+                            <input class="btn orange-btn" type="submit" value="Buscar">
                         </div>
                     </div>
 
                 </div>
             </form>
         </div>
-        <hr>
-        <div class="left">
-            <ul>
+        <hr><ul>
                 <% institutions.forEach((institution) => { %>
-                    <li>
-                        <div class="my-card">
-                            <div class="my-card-image">
-                                <img src="/images/doar.png" alt="Logo da policia" >
-                            </div>
-                            <div class="my-card-content">
-                                <h3 class="my-cardH3" ><%= institution.institution_name %></h3>
-                                <div class="line"></div>
-                                <p class="desc">
-                                <%= institution.endereco %>
-                                                <%= institution.bairro %>
-                                <%= institution.cep %>
-                                                <%= institution.cidade %>
-                                <%= institution.telefone %>
-                               <%= institution.email %></p>
-                            </div>
+                <li>
+                    <div class="my-card">
+                        <div class="my-card-image">
+                            <img src="/images/doar.png" alt="Logo da policia">
                         </div>
-                    </li>
+                        <div class="my-card-content">
+                            <h3 class="my-cardH3"><%= institution.institution_name %></h3>
+                            <p class="desc">
+                                <%= institution.endereco %>
+                                <%= institution.bairro %>
+                                <%= institution.cep %>
+                                <%= institution.cidade %>
+                                <%= institution.telefone %>
+                                <%= institution.email %>
+                            </p>
+                            <a href="" class="btn orange-btn"
+                            >Ver mais</a>
+                        </div>
+                    </div>
+                </li>
                 <% }) %>
             </ul>
-        </div>
+       
         <footer>
             <p></p>
         </footer>
     </div>
 </body>
+
 </html>
