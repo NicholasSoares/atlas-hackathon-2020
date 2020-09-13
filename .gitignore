@@ -104,3 +104,6 @@ dist
 .tern-port
 
 .idea/
+
+public/images/storage/*
+!public/images/storage/.gitkeep 

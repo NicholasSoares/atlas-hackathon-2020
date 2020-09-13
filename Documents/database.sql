@@ -31,6 +31,7 @@ create table institutions_categories (
 create table institutions (
 	institution_id BIGSERIAL PRIMARY KEY,
 	institution_category_id int NOT NULL references institutions_categories(institution_category_id),
+	image VARCHAR (200),
 	institution_name VARCHAR (200) NOT NULL,
 	endereco VARCHAR (200) NOT NULL,
 	bairro VARCHAR (200) NOT NULL,
@@ -70,6 +71,8 @@ insert into institutions (institution_category_id, institution_name, endereco, b
 insert into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) values (5, 'BANCO DE ALIMENTOS DE PELOTAS', 'AV. Bento Gonçalves - 4825 - A', 'Centro', '96015140', 'Pelotas', '5321238055', 'bancodealimentospelotas@gmail.com', '8101556000186');
 insert into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) values (6, 'SOCIEDADE PELOTENSE DE ASSISTENCIA E CULTURA', 'Rua Felix da Cunha - 412', 'Centro', '96010000', 'Pelotas', '5321288244', 'tianefr@gmail.com', '92238914000103');
 insert into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) values (6, 'FUNDAÇÃO DE APOIO UNIVERSITÁRIO', 'Rua Professor Araújo - 538', 'Centro', '96020360', 'Pelotas', '5332844900', 'direcao@fau.com.br', '89876114000103');
+insert into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) values (1, 'Instituição comunitária de Crédito da região sul', 'Lobo  da Costa, 1274, piso 1', 'centro', '96010150', 'pelotas', '5332278279', 'iccsul@uol.com.br', '5087411000180');
+insert into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) values ( 3, 'Asilo de mendigos de Pelotas', 'parque dom antonio zattera, 338', 'centro', '96015180', 'pelotas', '5332224762', 'asilomenpelotas@brturbo.com', '92239383000173');
 
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",
