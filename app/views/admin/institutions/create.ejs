@@ -12,7 +12,7 @@
 
       <div class="row mt-5 mb-5">
 
-        <form class="w-75" action="/admin/institutions/new" method="post">
+        <form class="w-75" action="/admin/institutions/new" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="role_id">Category</label>
             <select class="form-control custom-select" id="role_id" name="institution_category_id">
@@ -22,6 +22,14 @@
               <% }) %>
             </select>
           </div>
+
+          <div class="form-group">
+            <label for="image">Imagem</label>
+            <input type="file"
+                   id="avatar" name="image" value=""
+                   accept="image/png, image/jpeg">
+          </div>
+
           <div class="form-group">
             <label for="institution_name">Nome</label>
             <input type="text" class="form-control" id="institution_name" name="institution_name">

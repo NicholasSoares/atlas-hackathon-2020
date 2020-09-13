@@ -59,13 +59,13 @@ module.exports = {
             }
         });
     },
-    insert : async ({institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj}) =>{
+    insert : async ({institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj}) =>{
         return new Promise(async (resolve, reject) => {
             let client = await client_transaction.connect();
             try {
                 await client.query('BEGIN');
-                let resp = await client.query('INSERT into institutions (institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)',
-                 [institution_category_id, institution_name, endereco, bairro, cep, cidade, telefone, email, cnpj]);
+                let resp = await client.query('INSERT into institutions (institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
+                 [institution_category_id, institution_name, image, endereco, bairro, cep, cidade, telefone, email, cnpj]);
                 await client.query('COMMIT');
                 resolve(resp);
             } catch (e) {

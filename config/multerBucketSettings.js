@@ -27,7 +27,7 @@ module.exports = {
     production : {
         imageUpload : {
             destination: function (req, file, cb) {
-                let filepath = path.join(__dirname + '/../public/images');
+                let filepath = path.join(__dirname + '/../public/images/storage');
                 cb(null, filepath)
             },
             filename: function (req, file, cb) {

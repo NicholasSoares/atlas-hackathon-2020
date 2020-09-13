@@ -5,6 +5,7 @@ const paginationHelper = require('../../utils/paginationHelper');
 module.exports = {
     create: async (req, res, next) => {
         try {
+            req.body.image = req.file.filename;
             await institutionsRepository.insert(req.body);
             res.redirect('/admin/institutions');
         }
@@ -32,7 +33,6 @@ module.exports = {
     pageList: async (req, res, next) => {
         try {
             let institutions = await institutionsRepository.list({ search: undefined, limit: 1000, offset: 0 });
-            console.log(institutions);
             res.render('admin/institutions/list', { institutions });
         }
         catch (e) {
@@ -42,7 +42,6 @@ module.exports = {
     pageCreate: async (req, res, next) => {
         try {
             let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
-            console.log(institutionsCategories);
             res.render('admin/institutions/create', {categories : institutionsCategories});
         }
         catch (e) {
