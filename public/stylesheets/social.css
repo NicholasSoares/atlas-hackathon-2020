@@ -4,9 +4,13 @@ body {
     font-family: Roboto, Arial, Helvetica, sans-serif;
     background-color: white;
 }
-
+h3, h3 {
+    font-size: 1.50rem;
+}
 .filters {
     padding-top: 10px;
+    display: flex;
+    justify-content: center;
 }
 .container {
     max-width: none;
@@ -98,7 +102,7 @@ ul li {
 }
 
 .my-card {
-    max-width: 720px;
+    max-width: 780px;
     margin: 0px 10px;
     border: solid 2px;
     border-color: rgba(0, 0, 0, 0.568);
