@@ -2,6 +2,7 @@ drop table if EXISTS roles cascade;
 drop table if EXISTS users cascade;
 drop table if EXISTS institutions_categories cascade;
 drop table if EXISTS institutions cascade;
+drop table if EXISTS users_donations cascade;
 drop table if EXISTS session cascade;
 
 create table roles (
@@ -45,8 +46,18 @@ create table institutions (
     deleted boolean not null DEFAULT false
 );
 
+create table users_donations (
+	user_donation_id BIGSERIAL PRIMARY KEY,
+	user_id int NOT NULL references users(user_id),
+	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
+	title VARCHAR (80) NOT NULL,
+	description VARCHAR (500) NOT NULL,
+    deleted boolean not null DEFAULT false
+);
+
 insert into roles (role_id, rolename) values (0, 'Adminstrador');
 insert into roles (role_id, rolename) values (1, 'Usuario');
+insert into roles (role_id, rolename) values (2, 'Adminstrador Instituição');
 
 insert into users (role_id, username, email, password, cellphone) values (0, 'Adminstrador', 'teste@gmail.com', '$2b$10$hbiTjICrsPzXnsMTducHzOzvrm0L1LorrSjO3QHs32Xax0q1O8lPa','(53) 99999-9999');
 
