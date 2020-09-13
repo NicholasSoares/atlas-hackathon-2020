@@ -49,9 +49,9 @@ create table institutions (
 create table users_donations (
 	user_donation_id BIGSERIAL PRIMARY KEY,
 	user_id int NOT NULL references users(user_id),
-	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
 	title VARCHAR (80) NOT NULL,
 	description VARCHAR (500) NOT NULL,
+	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
     deleted boolean not null DEFAULT false
 );
 
