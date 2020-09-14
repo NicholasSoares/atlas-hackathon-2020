@@ -10,7 +10,6 @@ router.get('/', adminRequired, institutionsController.pageList);
 router.get('/new', adminRequired, institutionsController.pageCreate);
 router.post('/new', adminRequired, multerFileUpload, institutionsController.create);
 router.get('/solicitation', adminRequired, institutionsController.pageSolicitations);
-router.post('/solicitation', multerFileUpload, institutionsController.create_solicitation);
 router.get('/update', adminRequired, institutionsController.pageUpdate);
 router.post('/delete', adminRequired, institutionsController.delete);
 router.post('/approve', adminRequired, institutionsController.approve);

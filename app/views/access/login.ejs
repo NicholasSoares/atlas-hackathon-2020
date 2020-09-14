@@ -12,10 +12,13 @@
   </head>
   <body>
     <div class="container-fluid">
-      <div class="row justify-content-center align-content-center min-vh-100">
-        <div class="col-xl-8 border border-light rounded bg-light pt-5 pb-5 login-form-size">
+      <div class="row justify-content-center align-content-center min-vh-100" style="color: white; background-color: #311977">
+        <div class="col-xl-8 rounded pt-5 pb-5 login-form-size" style="color: white; background-color: #311977">
           <div id="msgErr" class="alert alert-danger msg-err" role="alert"></div>
-          <form method="post" action="/access" id="loginForm">
+          <form method="post" action="/access" id="loginForm" class="d-flex flex-column">
+            <div class="align-self-center">
+              <img src="/images/pelotassocial.png" alt="" style=" width: 300px;">
+            </div>
             <div class="form-group">
               <label for="email">Email</label>
               <input name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp">
@@ -26,17 +29,39 @@
             </div>
             <div class="row justify-content-center align-content-center">
               <div class="col-12 d-flex mt-2">
-                <button type="submit" class="btn btn-primary mx-auto pl-5 pr-5" id="btnLogin">Acessar</button>
+                <button type="submit" class="btn btn-success mx-auto pl-5 pr-5" id="btnLogin">Acessar</button>
               </div>
-              <div class="col-12 d-flex text-center mt-3">
-                <a href="/access/recovery" class="mx-auto text-secondary">Esqueci minha senha</a>
+              <div class="col-12 d-flex mt-1 mb-1 justify-content-center">
+                ou
               </div>
+              <a  class="btn btn-success mx-auto pl-5 pr-5" data-toggle="modal" data-target="#loginOptions">Cadastre-se</a>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+    <div id="loginOptions" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Qual tipo de usuário deseja criar?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Se você deseja oferecer itens para a doação, clique em "Doador".</p>
+            <p>Se você deseja aceitar doações para sua ONG ou Instituição de caridade, clique em "Instituição".</p>
+          </div>
+          <div class="modal-footer">
+            <a href="/cadastro?doador=true"> <button type="button" class="btn btn-primary">Doador</button></a>
+            <a href="/cadastro?instituicao=true"><button type="button" class="btn btn-primary">Instituição</button></a>
+          </div>
         </div>
       </div>
     </div>
   </body>
   <link rel="stylesheet" href="/stylesheets/style.css">
   <script src="/javascripts/loginPage.js"></script>
+]
 </html>

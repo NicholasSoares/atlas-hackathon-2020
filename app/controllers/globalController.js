@@ -54,8 +54,16 @@ module.exports = {
 	},
 	cadastroPage : async (req,res,next) => {
 		try {
-			let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
-			res.render('cadastro', {categories :institutionsCategories});
+
+			if(typeof req.query.instituicao != 'undefined'){
+				let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
+				res.render('cadastro', {categories :institutionsCategories});
+			}
+
+			if(typeof req.query.doador != 'undefined') {
+				res.render('donator/create');
+			}
+
 		} catch (e) {
 			next(e);
 		}

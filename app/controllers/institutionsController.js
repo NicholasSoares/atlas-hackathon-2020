@@ -1,12 +1,25 @@
 const institutionsRepository = require('../models/institutionsRepository');
+const userRepository = require('../models/userRepository');
 const institutionsCategoriesRepository = require('../models/institutionsCategoriesRepository');
+const passwordHelper = require('../../utils/passwordHelper');
 const paginationHelper = require('../../utils/paginationHelper');
 
 module.exports = {
     create: async (req, res, next) => {
         try {
+
+            let tempPassword = await passwordHelper.generateTempPassword();
+            console.log(tempPassword.plain);
+            let user = await userRepository.insert({
+                role_id: 2,
+                username: req.body.institution_name,
+                email:  req.body.email,
+                password: tempPassword.encrypted,
+                cellphone: req.body.telefone,
+            });
             req.body.image = req.file.filename;
             req.body.approved = true;
+            req.body.user_id = user.user_id;
             await institutionsRepository.insert(req.body);
             res.redirect('/admin/institutions');
         }
@@ -16,8 +29,19 @@ module.exports = {
     },
     create_solicitation: async (req, res, next) => {
         try {
+            let tempPassword = await passwordHelper.generateTempPassword();
+            console.log(tempPassword);
+            let user = await userRepository.insert({
+                role_id: 2,
+                username: req.body.institution_name,
+                email:  req.body.email,
+                password: tempPassword.encrypted,
+                cellphone: req.body.telefone,
+            });
+            console.log(user);
             req.body.image = req.file.filename;
             req.body.approved = false;
+            req.body.user_id = user.user_id;
             await institutionsRepository.insert(req.body);
             res.redirect('/');
         }

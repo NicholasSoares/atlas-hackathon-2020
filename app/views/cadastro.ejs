@@ -2,17 +2,20 @@
 <html>
 <head>
     <title>title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
-<div class="container">
-    <div class="row mt-5 border-bottom w-75">
+<div class="container-fluid d-flex justify-content-center flex-column align-items-center" style="color: white; background-color: #311977">
+    <div class="row p-5">
         <h2>Solicitar Criação de Instituição</h2>
     </div>
 
-    <div class="row mt-5 mb-5">
+    <div class="row p-1 w-50">
 
-        <form class="w-75" action="/admin/institutions/solicitation" method="post" enctype="multipart/form-data">
+        <form class="w-100" action="/institution-admin/new" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="role_id">Category</label>
                 <select class="form-control custom-select" id="role_id" name="institution_category_id">
@@ -62,7 +65,7 @@
                 <label for="cnpj">CNPJ</label>
                 <input type="text" class="form-control" id="cnpj" name="cnpj">
             </div>
-            <button type="submit" class="btn btn-primary">Solicitar Criação</button>
+            <button type="submit" class="btn btn-success text-center">Solicitar Criação</button>
         </form>
     </div>
 </div>

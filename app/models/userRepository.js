@@ -57,9 +57,10 @@ module.exports = {
             let client = await client_transaction.connect();
             try {
                 await client.query('BEGIN');
-                let resp = await client.query('INSERT into USERS (role_id, username, email,password, cellphone) VALUES ($1,$2,$3,$4,$5)', [role_id, username, email,password, cellphone]);
+                let resp = await client.query('INSERT into USERS (role_id, username, email,password, cellphone) VALUES ($1,$2,$3,$4,$5) RETURNING user_id', [role_id, username, email,password, cellphone]);
                 await client.query('COMMIT');
-                resolve(resp);
+                console.log(resp)
+                resolve(resp.rows[0]);
             } catch (e) {
                 await client.query('ROLLBACK');
                 reject(appError.newThrowPgError(e));
