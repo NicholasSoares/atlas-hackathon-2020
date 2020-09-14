@@ -14,11 +14,18 @@
 <div class="header">
     <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
     <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
-    <a href="/access" class="btn white-outline-btn">Entrar</a>
+    <a href="/access/logout" class="btn white-outline-btn">Sair</a>
 </div>
 <div class="container">
 
     <ul>
+        <% if(! donations.length) { %>
+            <li class="no-results">
+                <h2>
+                    Não temos nenhuma doação disponível =c
+                </h2>
+            </li>
+        <% } %>
         <% donations.forEach((donation) => { %>
             <li>
                 <div class="my-card">
@@ -40,16 +47,3 @@
 </body>
 
 </html>
-
-<div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group mr-2">
-        <a href="/donator/donations/new">
-            <button type="button" class="btn btn-success">New</button>
-        </a>
-    </div>
-</div>
-<form action="/donator/donations/delete" method="post">
-    <input type="hidden" name="user_donation_id" value="<%= donation.user_donation_id %>">
-    <input type="hidden" name="deleted" value="true">
-    <button class="btn btn-danger" type="submit">Delete</button>
-</form>

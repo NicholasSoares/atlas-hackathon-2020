@@ -14,18 +14,25 @@
 <div class="header">
     <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
     <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
-    <a href="/access" class="btn white-outline-btn">Entrar</a>
+    <a href="/access/logout" class="btn white-outline-btn">Sair</a>
 </div>
 <div class="container">
-
-    <div class="btn-toolbar mb-2 mb-md-0">
+    <br>
+    <div class="btn-toolbar mb-2 mb-md-0 mt-5 create-button">
         <div class="btn-group mr-2">
-            <a href="/donator/donations/new">
-                <button type="button" class="btn btn-success">New</button>
+            <a class="btn btn-call" href="/donator/donations/new">
+                <i class="material-icons">add</i>
             </a>
         </div>
     </div>
     <ul>
+        <% if(! donations.length) { %>
+            <li class="no-results">
+                <h2>
+                    Clique em criar doação no <strong> botão abaixo </strong>
+                </h2>
+            </li>
+        <% } %>
         <% donations.forEach((donation) => { %>
             <li>
                 <div class="my-card">
@@ -35,7 +42,7 @@
                         <form action="/donator/donations/delete" method="post">
                             <input type="hidden" name="user_donation_id" value="<%= donation.user_donation_id %>">
                             <input type="hidden" name="deleted" value="true">
-                            <button class="btn btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-delete" type="submit"><i class="material-icons">delete</i></button>
                         </form>
                     </div>
                     <div class="my-card-content">

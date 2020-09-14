@@ -19,6 +19,16 @@ module.exports = {
 	},
 	social : async (req,res,next) => {
 		try {
+			if(req.session.role_id === 0 ) {
+				res.redirect('/admin');
+			}
+			if(req.session.role_id === 1 ) {
+				res.redirect('/donator');
+			}
+			if(req.session.role_id === 2 ) {
+				res.redirect('/institution-admin');
+			}
+
 			let institutionsCategories = await institutionsCategoriesRepository.list({ search: undefined, limit: 1000, offset: 0 });
 			let institutions;
 			if(! req.query.category || req.query.category == 0){
@@ -26,8 +36,6 @@ module.exports = {
 			} else {
 				institutions = await institutionsRepository.getByCategory({ category_id: req.query.category });
 			}
-
-			console.log(institutions);
 
 			res.render('social/index', { institutions: institutions, categories: institutionsCategories});
 		} catch (e) {
