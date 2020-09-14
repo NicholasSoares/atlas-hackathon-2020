@@ -1,11 +1,13 @@
-const donationsRepository = require('../models/institutionsCategoriesRepository');
+const donationsRepository = require('../models/donationsRepository');
 const paginationHelper = require('../../utils/paginationHelper');
 
 module.exports = {
     create: async (req, res, next) => {
         try {
+            req.body.image = req.file.filename;
+            req.body.user_id = req.session.user_id;
             await donationsRepository.insert(req.body);
-            res.redirect('');
+            res.redirect('/donator');
         }
         catch (e) {
             next(e);
@@ -22,7 +24,7 @@ module.exports = {
     delete: async (req, res, next) => {
         try {
             await donationsRepository.delete(req.body);
-            res.redirect('');
+            res.redirect('/donator');
         }
         catch (e) {
             next(e);
@@ -31,7 +33,7 @@ module.exports = {
     pageList: async (req, res, next) => {
         try {
             let donations = await donationsRepository.list({ search: undefined, limit: 1000, offset: 0 });
-            res.render('social/donations/list', { donations: donations });
+            res.render('donator/donations/list', { donations: donations });
         }
         catch (e) {
             next(e);
@@ -39,7 +41,7 @@ module.exports = {
     },
     pageCreate: async (req, res, next) => {
         try {
-            res.render('social/donations/create');
+            res.render('donator/donations/create');
         }
         catch (e) {
             next(e);
@@ -47,7 +49,7 @@ module.exports = {
     },
     pageUpdate: async (req, res, next) => {
         try {
-            res.render('social/donations/details');
+            res.render('donator/donations/details');
         }
         catch (e) {
             next(e);

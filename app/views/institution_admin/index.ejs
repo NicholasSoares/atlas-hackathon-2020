@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/social.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Pelotas Social</title>
+</head>
+
+<body>
+<div class="header">
+    <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
+    <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
+    <a href="/access" class="btn white-outline-btn">Entrar</a>
+</div>
+<div class="container">
+
+    <ul>
+        <% donations.forEach((donation) => { %>
+            <li>
+                <div class="my-card">
+                    <div class="my-card-image">
+                        <img src="<%= donation.image ? '/images/storage/'+donation.image : '/images/doar.png' %>"
+                             alt="<%= donation.title %>">
+                        <a href="tel:<%= donation.cellphone %>" class="btn btn-call"><i class="material-icons">call</i></a>
+                    </div>
+                    <div class="my-card-content">
+                        <h3><%= donation.title %></h3>
+                        <hr>
+                        <p class="desc"><%= donation.description %></p>
+                    </div>
+                </div>
+            </li>
+        <% }) %>
+    </ul>
+</div>
+</body>
+
+</html>
+
+<div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+        <a href="/donator/donations/new">
+            <button type="button" class="btn btn-success">New</button>
+        </a>
+    </div>
+</div>
+<form action="/donator/donations/delete" method="post">
+    <input type="hidden" name="user_donation_id" value="<%= donation.user_donation_id %>">
+    <input type="hidden" name="deleted" value="true">
+    <button class="btn btn-danger" type="submit">Delete</button>
+</form>

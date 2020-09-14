@@ -34,6 +34,48 @@ module.exports = {
             }
         });
     },
+    listWithUser : async ({search, limit, offset}) =>{
+        return new Promise(async (resolve, reject) => {
+            try{
+                let resp;
+
+                if (search){
+                    resp = await client.query(`SELECT * FROM users_donations INNER JOIN users ON (users_donations.user_id = users.user_id)
+                    WHERE
+                        (
+                            user_donation_id ILIKE "%$1%" or
+                            user_id ILIKE "%$1%" or
+                            title ILIKE "%$1%" or
+                            description ILIKE "%$1%"
+                        )
+                    and users_donations.deleted = false
+                    LIMIT $2 OFFSET $3`, [search, limit, offset]);
+                }
+                else{
+                    resp = await client.query(`SELECT * FROM users_donations  INNER JOIN users ON (users_donations.user_id = users.user_id)
+                    WHERE users_donations.deleted = false
+                    LIMIT $1 OFFSET $2`, [limit, offset]);
+                }
+
+                resolve(resp.rows);
+
+            }
+            catch (e) {
+                reject(appError.newThrowPgError(e));
+            }
+        });
+    },
+    getByUser : async ({user_id}) => {
+        return new Promise(async (resolve, reject) => {
+            try{
+                let resp = await client.query('SELECT *  FROM users_donations WHERE user_id = $1 and deleted = false', [user_id]);
+                resolve(resp.rows);
+            }
+            catch (e) {
+                reject(appError.newThrowPgError(e));
+            }
+        });
+    },
     getById : async ({user_donation_id}) =>{
         return new Promise(async (resolve, reject) => {
             try{
@@ -45,12 +87,12 @@ module.exports = {
             }
         });
     },
-    insert : async ({user_donation_id, user_id, title, description}) =>{
+    insert : async ({ user_id, image, title, description}) =>{
         return new Promise(async (resolve, reject) => {
             let client = await client_transaction.connect();
             try {
                 await client.query('BEGIN');
-                let resp = await client.query('INSERT into users_donations (user_donation_id, user_id, title, description) VALUES ($1,$2,$3,$4)', [user_donation_id, user_id, title, description]);
+                let resp = await client.query('INSERT into users_donations ( user_id, image, title, description) VALUES ($1,$2,$3,$4)', [ user_id, image, title, description]);
                 await client.query('COMMIT');
                 resolve(resp);
             } catch (e) {

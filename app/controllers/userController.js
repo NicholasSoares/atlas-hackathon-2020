@@ -1,4 +1,5 @@
 const userRepository = require('../models/userRepository');
+const roleRepository = require('../models/roleRepository');
 const passwordHelper = require('../../utils/passwordHelper');
 const paginationHelper = require('../../utils/paginationHelper');
 
@@ -6,6 +7,7 @@ module.exports = {
     create: async (req, res, next) => {
         try {
             req.body.password = await passwordHelper.encryptPassword(req.body.password);
+
             await userRepository.insert(req.body);
             res.redirect('/admin/users');
         }
@@ -44,7 +46,9 @@ module.exports = {
     },
     pageCreate: async (req, res, next) => {
         try {
-            res.render('admin/users/create');
+            let roles = await roleRepository.list();
+            console.log(roles);
+            res.render('admin/users/create', {roles});
         }
         catch (e) {
             next(e);

@@ -33,6 +33,7 @@ create table institutions (
 	institution_id BIGSERIAL PRIMARY KEY,
 	institution_category_id int NOT NULL references institutions_categories(institution_category_id),
 	image VARCHAR (200),
+	user_id integer,
 	institution_name VARCHAR (200) NOT NULL,
 	endereco VARCHAR (200) NOT NULL,
 	bairro VARCHAR (200) NOT NULL,
@@ -50,17 +51,20 @@ create table institutions (
 create table users_donations (
 	user_donation_id BIGSERIAL PRIMARY KEY,
 	user_id int NOT NULL references users(user_id),
+    image VARCHAR (200),
 	title VARCHAR (80) NOT NULL,
 	description VARCHAR (500) NOT NULL,
 	created_on TIMESTAMP NOT NULL DEFAULT NOW(),
     deleted boolean not null DEFAULT false
 );
 
-insert into roles (role_id, rolename) values (0, 'Adminstrador');
-insert into roles (role_id, rolename) values (1, 'Usuario');
-insert into roles (role_id, rolename) values (2, 'Adminstrador Instituição');
+insert into roles (role_id, rolename) values (0, 'Administrador');
+insert into roles (role_id, rolename) values (1, 'Doador');
+insert into roles (role_id, rolename) values (2, 'Administrador Instituição');
 
-insert into users (role_id, username, email, password, cellphone) values (0, 'Adminstrador', 'teste@gmail.com', '$2b$10$hbiTjICrsPzXnsMTducHzOzvrm0L1LorrSjO3QHs32Xax0q1O8lPa','(53) 99999-9999');
+insert into users (role_id, username, email, password, cellphone) values (0, 'Administrador', 'admin@gmail.com', '$2b$10$hbiTjICrsPzXnsMTducHzOzvrm0L1LorrSjO3QHs32Xax0q1O8lPa','(53) 99999-9999');
+insert into users (role_id, username, email, password, cellphone) values (1, 'Usuario', 'usuario@gmail.com', '$2b$10$I4gONxdYyfIoXXTsjX3KBOHHh/JO09eK9Mnwac6kz9wJ4TTjQ5LGe','(53) 99999-9999');
+insert into users (role_id, username, email, password, cellphone) values (2, 'Instituicao', 'instituicao@gmail.com', '$2b$10$o/q0Ouxa99iqaDXPAVXUsuNOJfNC38rcJwZeqOlGYCBRhkj8mFalu','(53) 99999-9999');
 
 insert into institutions_categories (institution_category_name) values ( 'Animais' );
 insert into institutions_categories (institution_category_name) values ( 'Crianças' );

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>title</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+  </head>
+  <body>
+  <div class="container">
+
+    <div class="row mt-5 border-bottom w-75">
+      <h2>Nova Doação</h2>
+    </div>
+    <div class="row mt-5">
+
+      <form class="w-75" action="/donator/donations/new" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+          <label for="image">Imagem</label>
+          <input type="file"
+                 id="avatar" name="image" value=""
+                 accept="image/png, image/jpeg">
+        </div>
+        <div class="form-group">
+          <label for="title">Título</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Your name here.">
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Descrição</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" name="description" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+  </div>
+  </body>
+</html>
