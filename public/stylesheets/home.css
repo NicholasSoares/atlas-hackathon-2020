@@ -17,7 +17,6 @@
     margin: 0;
     height: 50px;
     display: flex;
-    margin-left: 15px;
 }
 
 .container {
@@ -49,18 +48,18 @@
 }
 
 .logo_card img {
-    width: 360px;
+    width: 300px;
     margin-bottom: 50px;
 }
 
 .card p {
-    font-size: 30px;
+    font-size: 26px;
     font-family: Sans-serif;
     text-align: center;
     font-style: normal;
     font-weight: normal;
     line-height: 50px;
-    max-width: 560px;
+    max-width: 500px;
 }
 
 .card p strong {
@@ -71,9 +70,9 @@
 
 .card_btn {
     margin-top: 50px;
-    width: 250px;
-    height: 70px;
-    border-radius: 10px;
+    width: 200px;
+    height: 60px;
+    border-radius: 7px;
     font-style: normal;
     font-weight: bold;
     font-size: 30px;
@@ -84,19 +83,25 @@
 .left_card .card_btn {
     background: #FFFFFF;
     color: #FF5500;
-    border: #FF5500 4px solid;
+    border: #FF5500 3px solid;
 
 }
 
 .right_card .card_btn {
-    background: #FFFFFF;
-    color: #311977;
-    border:none;
+    background: #311977;
+    color: white;
+    border: white 2.5px solid;
 }
 
 
-.card_btn:hover{
+.left_card .card_btn:hover{
     background: #FF5500;
     color: #FFFFFF;
+    border:none;
+}
+
+.right_card .card_btn:hover{
+    background: white;
+    color: #311977;
     border:none;
 }

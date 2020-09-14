@@ -6,8 +6,8 @@ const adminRoutes = require('../app/routes/adminRoutes');
 
 module.exports = {
     routesLoader : (app) => {
-        app.use('/', limiter, globalRoutes);
-        app.use('/access', limiter, accessRoutes);
-        app.use('/admin',  limiter, adminRoutes);
+        app.use('/', globalRoutes);
+        app.use('/access', accessRoutes);
+        app.use('/admin',  adminRoutes);
     }
 };

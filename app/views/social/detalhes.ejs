@@ -6,14 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/stylesheets/social.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title><%= institution.institution_name %> - Pelotas Social</title>
 </head>
 
 <body>
     <div class="header">
-        <a href="/social">
-            <img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social">
-        </a>
+        <a href="/social" class="btn home-btn home-social-btn"><i class="material-icons">arrow_back</i></a>
+        <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
+        <a href="/access" class="btn white-outline-btn">Entrar</a>
     </div>
     <div class="container">
         <div class="filters">
@@ -21,7 +22,7 @@
                 <div class="form-group">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <label class="input-group-text" for="category">Escolha a categoria:</label>
+                            <label class="input-group-text" for="category">Escolha uma categoria:</label>
                         </div>
                         <select class="form-control custom-select" id="role_id" name="category">
                             <option value="0" selected>Todas</option>
