@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/social.css">
 </head>
 
 <body>
@@ -37,29 +38,34 @@
 
             <% if(typeof solicitation != 'undefined') {%>
 
-                <br><%= solicitation.institution_id %>
-                <br><%= solicitation.institution_category_id %>
-                <br><%= solicitation.institution_name %>
-                <br><%= solicitation.endereco %>
-                <br><%= solicitation.bairro %>
-                <br><%= solicitation.cep %>
-                <br><%= solicitation.cidade %>
-                <br><%= solicitation.telefone %>
-                <br><%= solicitation.email %>
-                <br><%= solicitation.cnpj %>
-
-                <form action="/admin/institutions/approve" method="post">
-                    <input type="hidden" name="institution_id" value="<%= solicitation.institution_id %>">
-                    <input type="hidden" name="approved" value="true">
-                    <button class="btn btn-success" type="submit">Aprovar</button>
-                </form>
-                <form action="/admin/institutions/reprove" method="post">
-                    <input type="hidden" name="institution_id" value="<%= solicitation.institution_id %>">
-                    <input type="hidden" name="deleted" value="true">
-                    <button class="btn btn-danger" type="submit">Reprovar</button>
-                </form>
+                <ul>
+                    <li>
+                        <div class="my-card">
+                            <div class="my-card-image-holder">
+                                <img src="<%= solicitation.image ? '/images/storage/'+solicitation.image : '/images/doar.png' %>"
+                                     class="<%= solicitation.image ? 'my-card-image-rounded' : 'my-card-image' %>"
+                                     alt="<%= solicitation.institution_name %>">
+                                <form action="/admin/institutions/approve" method="post">
+                                    <input type="hidden" name="institution_id" value="<%= solicitation.institution_id %>">
+                                    <input type="hidden" name="approved" value="true">
+                                    <button class="btn btn-success" type="submit">Aprovar</button>
+                                </form>
+                                <form action="/admin/institutions/reprove" method="post">
+                                    <input type="hidden" name="institution_id" value="<%= solicitation.institution_id %>">
+                                    <input type="hidden" name="deleted" value="true">
+                                    <button class="btn btn-danger" type="submit">Reprovar</button>
+                                </form>
+                            </div>
+                            <div class="my-card-content">
+                                <h3><%= solicitation.institution_name %></h3>
+                                <hr>
+                                <p class="desc"><%= solicitation.descricao %></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             <% } else { %>
-                <h1>TEM NADA NAO</h1>
+                <h4>Não tem solicitações restantes!</h4>
             <% } %>
         </main>
     </div>
