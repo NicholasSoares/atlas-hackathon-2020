@@ -65,7 +65,9 @@ ul li {
 
 .my-card .my-card-image {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 30px;
     background-color: #eeeeee;
     height: 100%;
@@ -74,8 +76,8 @@ ul li {
 .my-card .my-card-image img{
     width: 120px;
     height: 120px;
-    background: white;
-    border-radius: 60px;
+    /* background: white;
+    border-radius: 60px; */
 }
 
 .my-card .my-card-content {
@@ -103,6 +105,14 @@ ul li {
 .orange-btn:hover {
     color: white; 
     background-color: #FF5500;
+}
+
+a {
+    color: #F4A14E;
+}
+
+a:hover{
+    color: #FF5500;
 }
 
 @media screen and (max-width: 480px) {
