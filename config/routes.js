@@ -7,10 +7,10 @@ const institutionAdminRoutes = require('../app/routes/institutionAdminRoutes');
 
 module.exports = {
     routesLoader : (app) => {
-        app.use('/', limiter, globalRoutes);
-        app.use('/access', limiter, accessRoutes);
-        app.use('/admin',  limiter, adminRoutes);
-        app.use('/donator', limiter, donatorRoutes);
-        app.use('/institution-admin', limiter, institutionAdminRoutes);
+        app.use('/', globalRoutes);
+        app.use('/access', accessRoutes);
+        app.use('/admin',  adminRoutes);
+        app.use('/donator', donatorRoutes);
+        app.use('/institution-admin', institutionAdminRoutes);
     }
 };

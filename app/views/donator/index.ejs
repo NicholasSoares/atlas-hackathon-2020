@@ -11,34 +11,35 @@
 </head>
 
 <body>
-<div class="header">
-    <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
-    <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
-    <a href="/access/logout" class="btn white-outline-btn">Sair</a>
-</div>
-<div class="container">
-    <br>
-    <div class="btn-toolbar mb-2 mb-md-0 mt-5 create-button">
-        <div class="btn-group mr-2">
-            <a class="btn btn-call" href="/donator/donations/new">
-                <i class="material-icons">add</i>
-            </a>
-        </div>
+    <div class="header">
+        <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
+        <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
+        <a href="/access/logout" class="btn white-outline-btn">Sair</a>
     </div>
-    <ul>
-        <% if(! donations.length) { %>
+    <div class="container">
+        <br>
+        <div class="btn-toolbar create-button">
+            <div class="btn-group m-2">
+                <a class="btn btn-call" href="/donator/donations/new">
+                    <i class="material-icons">add</i>
+                </a>
+            </div>
+        </div>
+        <ul>
+            <% if(! donations.length) { %>
             <li class="no-results">
-                <h2>
-                    Clique em criar doação no <strong> botão abaixo </strong>
-                </h2>
+                <h4>
+                    Clique no <strong>botão abaixo</strong> para criar uma doação.
+                </h4>
             </li>
-        <% } %>
-        <% donations.forEach((donation) => { %>
+            <% } %>
+            <% donations.forEach((donation) => { %>
             <li>
                 <div class="my-card">
-                    <div class="my-card-image">
+                    <div class="my-card-image-holder">
                         <img src="<%= donation.image ? '/images/storage/'+donation.image : '/images/doar.png' %>"
-                             alt="<%= donation.title %>">
+                            class="<%= donation.image ? 'my-card-image-rounded' : 'my-card-image' %>"
+                            alt="<%= donation.title %>">
                         <form action="/donator/donations/delete" method="post">
                             <input type="hidden" name="user_donation_id" value="<%= donation.user_donation_id %>">
                             <input type="hidden" name="deleted" value="true">
@@ -52,10 +53,9 @@
                     </div>
                 </div>
             </li>
-        <% }) %>
-    </ul>
-</div>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 
 </html>
-

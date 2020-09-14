@@ -11,28 +11,30 @@
 </head>
 
 <body>
-<div class="header">
-    <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
-    <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
-    <a href="/access/logout" class="btn white-outline-btn">Sair</a>
-</div>
-<div class="container">
+    <div class="header">
+        <a href="/" class="btn home-btn home-social-btn"><i class="material-icons">home</i></a>
+        <a href="/social"><img class="logo" src="/images/pelotassocial.png" alt="Pelotas Social"></a>
+        <a href="/access/logout" class="btn white-outline-btn">Sair</a>
+    </div>
+    <div class="container">
 
-    <ul>
-        <% if(! donations.length) { %>
+        <ul>
+            <% if(! donations.length) { %>
             <li class="no-results">
-                <h2>
-                    Não temos nenhuma doação disponível =c
-                </h2>
+                <h4>
+                    Não temos nenhuma doação disponível.
+                </h4>
             </li>
-        <% } %>
-        <% donations.forEach((donation) => { %>
+            <% } %>
+            <% donations.forEach((donation) => { %>
             <li>
                 <div class="my-card">
-                    <div class="my-card-image">
+                    <div class="my-card-image-holder">
                         <img src="<%= donation.image ? '/images/storage/'+donation.image : '/images/doar.png' %>"
-                             alt="<%= donation.title %>">
-                        <a href="tel:<%= donation.cellphone %>" class="btn btn-call"><i class="material-icons">call</i></a>
+                            class="<%= donation.image ? 'my-card-image-rounded' : 'my-card-image' %>"
+                            alt="<%= donation.title %>">
+                        <a href="tel:<%= donation.cellphone %>" class="btn btn-call"><i
+                                class="material-icons">call</i></a>
                     </div>
                     <div class="my-card-content">
                         <h3><%= donation.title %></h3>
@@ -41,9 +43,9 @@
                     </div>
                 </div>
             </li>
-        <% }) %>
-    </ul>
-</div>
+            <% }) %>
+        </ul>
+    </div>
 </body>
 
 </html>

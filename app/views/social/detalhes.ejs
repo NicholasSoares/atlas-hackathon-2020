@@ -17,34 +17,12 @@
         <a href="/access" class="btn white-outline-btn">Entrar</a>
     </div>
     <div class="container">
-        <div class="filters">
-            <form action="/social" method="get">
-                <div class="form-group">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="category">Escolha uma categoria:</label>
-                        </div>
-                        <select class="form-control custom-select" id="role_id" name="category">
-                            <option value="0" selected>Todas</option>
-                            <% categories.forEach((category) => { %>
-                            <option value="<%= category.institution_category_id %>">
-                                <%= category.institution_category_name %></option>
-                            <% }) %>
-                        </select>
-                        <div class="input-group-append">
-                            <input class="btn orange-btn" type="submit" value="Buscar">
-                        </div>
-                    </div>
-
-                </div>
-            </form>
-        </div>
-        <hr>
         <ul>
             <li>
                 <div class="my-card">
-                    <div class="my-card-image">
+                    <div class="my-card-image-holder">
                         <img src="<%= institution.image ? '/images/storage/'+institution.image : '/images/doar.png' %>"
+                            class="<%= institution.image ? 'my-card-image-rounded' : 'my-card-image' %>"
                             alt="<%= institution.institution_name %>">
                     </div>
                     <div class="my-card-content">

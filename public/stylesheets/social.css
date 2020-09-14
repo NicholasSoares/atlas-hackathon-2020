@@ -108,7 +108,7 @@ ul li {
     background-color: white;
 }
 
-.my-card .my-card-image {
+.my-card .my-card-image-holder {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,11 +118,16 @@ ul li {
     height: 100%;
 }
 
-.my-card .my-card-image img{
+.my-card .my-card-image{
     width: 120px;
     height: 120px;
-    /* background: white;
-    border-radius: 60px; */
+}
+
+.my-card .my-card-image-rounded{
+    width: 120px;
+    height: 120px;
+    background: white;
+    border-radius: 60px;
 }
 
 .my-card .my-card-content {
@@ -219,7 +224,7 @@ a:hover{
         background-color: white;
     }
 
-    .my-card .my-card-image {
+    .my-card .my-card-image-holder {
         display: flex;
         flex-direction: row;
         align-items: center;

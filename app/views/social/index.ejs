@@ -44,10 +44,11 @@
             <% institutions.forEach((institution) => { %>
             <li>
                 <div class="my-card">
-                    <div class="my-card-image">
+                    <div class="my-card-image-holder">
                         <img src="<%= institution.image ? '/images/storage/'+institution.image : '/images/doar.png' %>"
+                            class="<%= institution.image ? 'my-card-image-rounded' : 'my-card-image' %>"
                             alt="<%= institution.institution_name %>">
-                            <a href="/social/<%=institution.institution_id%>" class="btn orange-btn">Ver mais</a>
+                        <a href="/social/<%=institution.institution_id%>" class="btn orange-btn">Ver mais</a>
                     </div>
                     <div class="my-card-content">
                         <h3><%= institution.institution_name %></h3>

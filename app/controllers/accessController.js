@@ -43,7 +43,7 @@ module.exports = {
     logout : async (req,res,next) => {
         try{
             req.session.destroy();
-            res.redirect('/');
+            res.redirect('/social');
         }
         catch (e) {
             next(e);
