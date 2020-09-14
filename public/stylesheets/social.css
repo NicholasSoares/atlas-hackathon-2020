@@ -106,7 +106,9 @@ ul li {
     color: white; 
     background-color: #FF5500;
 }
-
+.btn-call {
+    margin-top: 20px;
+}
 a {
     color: #F4A14E;
 }
@@ -117,5 +119,46 @@ a:hover{
 
 @media screen and (max-width: 480px) {
 
-    /* RESPONSIVIDADE */
+    .my-card {
+        margin: 10px;
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px grey;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+        border-left-style: none;
+        border-top-style: solid;
+        border-top-width: 10px;
+        border-top-color: #FF5500;
+        background-color: white;
+    }
+
+    .my-card .my-card-image {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+        background-color: #eeeeee;
+        width: 100%;
+    }
+
+
+    .orange-btn {
+        background-color: #F4A14E;
+        color: white;
+    }
+
+    .orange-btn:hover {
+        color: white;
+        background-color: #FF5500;
+    }
+
+    .btn-call {
+        margin-top: 0px;
+        margin-left: 20px;
+    }
 }
